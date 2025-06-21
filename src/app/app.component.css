@@ -23,3 +23,18 @@ button {
   text-decoration: line-through;
   color: gray;
 }
+
+.filtros {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+}
+.filtros button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+}
+.filtros button:hover {
+  background-color: #aaa;
+}

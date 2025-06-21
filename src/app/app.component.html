@@ -5,12 +5,18 @@
     <input [(ngModel)]="novaTarefa" placeholder="Digite uma tarefa" />
     <button (click)="adicionarTarefa()">Adicionar</button>
   </div>
-
+  <div class="filtros">
+    <button (click)="filtroAtual = 'todas'">Todas</button>
+    <button (click)="filtroAtual = 'feitas'">Feitas</button>
+    <button (click)="filtroAtual = 'pendentes'">Pendentes</button>
+  </div>
   <ul>
-    <li *ngFor="let tarefa of tarefas; let i = index">
+    <li *ngFor="let tarefa of tarefasFiltradas; let i = index">
+
       <input type="checkbox" [(ngModel)]="tarefa.feita" />
       <span [class.feita]="tarefa.feita">{{ tarefa.nome }}</span>
       <button (click)="removerTarefa(i)">🗑️</button>
     </li>
+    
   </ul>
 </div>

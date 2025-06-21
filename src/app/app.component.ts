@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   novaTarefa = '';
   tarefas: { nome: string; feita: boolean }[] = [];
+  filtroAtual: 'todas' | 'feitas' | 'pendentes' = 'todas';
+
 
   constructor() {
     this.carregarTarefas(); //Carrega as tarefas salvas ao iniciar
@@ -43,4 +45,15 @@ export class AppComponent {
       this.tarefas = JSON.parse(tarefasTexto);
     }
   }
+
+  get tarefasFiltradas() {
+  if (this.filtroAtual === 'feitas') {
+    return this.tarefas.filter(t => t.feita);
+  }
+  if (this.filtroAtual === 'pendentes') {
+    return this.tarefas.filter(t => !t.feita);
+  }
+  return this.tarefas;
+}
+
 }
