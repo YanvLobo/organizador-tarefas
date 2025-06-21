@@ -1,0 +1,25 @@
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  font-family: sans-serif;
+}
+
+.input-area {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 12px;
+}
+
+.feita {
+  text-decoration: line-through;
+  color: gray;
+}
