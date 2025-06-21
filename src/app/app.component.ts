@@ -13,14 +13,34 @@ export class AppComponent {
   novaTarefa = '';
   tarefas: { nome: string; feita: boolean }[] = [];
 
+  constructor() {
+    this.carregarTarefas(); //Carrega as tarefas salvas ao iniciar
+  }
+
   adicionarTarefa() {
     if (this.novaTarefa.trim()) {
       this.tarefas.push({ nome: this.novaTarefa.trim(), feita: false });
       this.novaTarefa = '';
+      this.salvarTarefas(); //Salva após adicionar
     }
   }
 
   removerTarefa(index: number) {
     this.tarefas.splice(index, 1);
+    this.salvarTarefas(); //Salva após remover
+  }
+
+  salvarTarefas() {
+    //Transforma a lista em texto e salva no navegador
+    const tarefasTexto = JSON.stringify(this.tarefas);
+    localStorage.setItem('minhas_tarefas', tarefasTexto);
+  }
+
+  carregarTarefas() {
+    //Lê as tarefas do navegador, se existirem
+    const tarefasTexto = localStorage.getItem('minhas_tarefas');
+    if (tarefasTexto) {
+      this.tarefas = JSON.parse(tarefasTexto);
+    }
   }
 }
